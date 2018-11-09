@@ -132,7 +132,6 @@ class HuobiDM:
     
     
     # 获取市场最近成交记录
-    # 好像size不起作用？只能取到最近一条成交记录？
     def get_contract_trade(self, symbol, size=1):
         """
         :param symbol: 可选值：{ BTC_CW, BTC_NW, BTC_CQ, etc. }
