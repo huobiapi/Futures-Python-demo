@@ -9,7 +9,7 @@ python 2.7
 from HuobiDMService import HuobiDM
 from pprint import pprint
 
-URL = ""
+URL = "" #国内：api.dm.huobi.br.com  国外：api.dm.hbg.com
 
 ####  input your access_key and secret_key below:
 ACCESS_KEY = ''
