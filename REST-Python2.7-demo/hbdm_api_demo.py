@@ -1,19 +1,21 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Created on Mon Sep 17 15:48:13 2018
-python 2.7
+
 @author: zhaobo
 """
 
 from HuobiDMService import HuobiDM
 from pprint import pprint
 
-URL = "" #http://api.hbdm.com
+#### input huobi dm url
+URL = ''
 
 ####  input your access_key and secret_key below:
 ACCESS_KEY = ''
 SECRET_KEY = ''
+
 
 dm = HuobiDM(URL, ACCESS_KEY, SECRET_KEY)
 
@@ -69,20 +71,19 @@ pprint (dm.get_contract_position_info("BTC"))
 
 print (u' 合约下单 ')
 pprint(dm.send_contract_order(symbol='', contract_type='', contract_code='BTC181228', 
-                        client_order_id='', price=50, volume=1, direction='buy',
+                        client_order_id='', price=10000, volume=1, direction='sell',
                         offset='open', lever_rate=5, order_price_type='limit'))
 
-# {'data': {'order_id': 42652161}, 'status': 'ok', 'ts': 1537270256575}
 
 print (u' 合约批量下单 ')
 orders_data = {'orders_data': [
                {'symbol': 'BTC', 'contract_type': 'quarter',  
                 'contract_code':'BTC181228',  'client_order_id':'', 
-                'price':1, 'volume':1, 'direction':'buy', 'offset':'open', 
+                'price':10000, 'volume':1, 'direction':'sell', 'offset':'open', 
                 'leverRate':5, 'orderPriceType':'limit'},
                {'symbol': 'BTC','contract_type': 'quarter', 
                 'contract_code':'BTC181228', 'client_order_id':'', 
-                'price':2, 'volume':2, 'direction':'buy', 'offset':'open', 
+                'price':20000, 'volume':2, 'direction':'sell', 'offset':'open', 
                 'leverRate':5, 'orderPriceType':'limit'}]}
 pprint(dm.send_contract_batchorder(orders_data))
 
@@ -97,7 +98,7 @@ print (u' 获取合约订单信息 ')
 pprint(dm.get_contract_order_info(symbol='BTC', order_id='42652161'))
 
 print (u' 获取合约订单明细信息 ')
-pprint(dm.get_contract_order_detail(symbol='BTC', order_id='42652161'))
+pprint(dm.get_contract_order_detail(symbol='BTC', order_id='42652161', order_type=1, created_at=1542097630215))
 
 print (u' 获取合约当前未成交委托 ')
 pprint(dm.get_contract_open_orders(symbol='BTC'))
