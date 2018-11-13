@@ -312,17 +312,21 @@ class HuobiDM:
     
     # 获取合约订单明细信息
         
-    def get_contract_order_detail(self, symbol, order_id, page_index=None, page_size=None):
+    def get_contract_order_detail(self, symbol, order_id, order_type, created_at, page_index=None, page_size=None):
         """
         参数名称     是否必须  类型    描述
         symbol      true	    string "BTC","ETH"...
         order_id    true	    long	   订单id
+        order_type  true    int    订单类型。1:报单， 2:撤单， 3:爆仓， 4:交割
+        created_at  true    number 订单创建时间
         page_index  false   int    第几页,不填第一页
         page_size   false   int    不填默认20，不得多于50
         """
         
         params = {"symbol": symbol,
-                  "order_id": order_id}
+                  "order_id": order_id,
+                  "order_type": order_type,
+                  "created_at": created_at}
         if page_index:
             params["page_index"] = page_index
         if page_size:
