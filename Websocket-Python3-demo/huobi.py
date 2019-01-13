@@ -36,10 +36,17 @@ if __name__ == '__main__':
 
     # 请求 Trade Detail 数据
     tradeStr_tradeDetail_req="""
-    {"req": "market.BTC_CQ.kline.1min", "id": "id4"}
+    {"req": "market.BTC_CQ.trade.detail", "id": "id5"}
     """
 
-    ws.send(tradeStr_kline)
+    # 订阅 Market Depth 数据
+    tradeStr_marketDepth="""
+    {
+        "sub": "market.BTC_CQ.depth.step0", "id": "id9"
+    }
+    """
+
+    ws.send(tradeStr_marketDepth)
     trade_id = ''
     while(1):
         compressData=ws.recv()
