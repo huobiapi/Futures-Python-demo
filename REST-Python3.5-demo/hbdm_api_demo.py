@@ -3,7 +3,7 @@
 """
 Created on Mon Sep 17 15:48:13 2018
 
-@author: zhaobo
+@author: zhaobo,API调试过程中有问题或者有疑问可反馈微信号shaoxiaofeng1118
 """
 
 from HuobiDMService import HuobiDM
